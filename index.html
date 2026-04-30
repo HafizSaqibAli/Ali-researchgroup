@@ -323,7 +323,93 @@
     </div>
 
   </div> -->
+<!-- ── CONTACT & LOCATION ─────────────────────────────── -->
+<section class="section">
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start;">
 
+    <!-- LEFT: Get in Touch form -->
+    <div>
+      <h2 style="font-family:var(--serif);font-size:2rem;color:var(--navy);margin-bottom:.4rem;">Get in touch</h2>
+      <hr class="gold-rule">
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.5rem;">
+        Interested in collaboration, PhD opportunities, or joining the group? We'd love to hear from you.
+      </p>
+
+      <div style="display:flex;flex-direction:column;gap:1.2rem;">
+        <div>
+          <label style="font-size:.85rem;color:var(--muted);display:block;margin-bottom:.4rem;">
+            Name <span style="color:var(--accent);">*</span>
+          </label>
+          <input type="text"
+            style="width:100%;padding:.65rem .8rem;border:1px solid #ccc;border-radius:4px;font-family:var(--sans);font-size:.9rem;color:var(--text);outline:none;box-sizing:border-box;">
+        </div>
+
+        <div>
+          <label style="font-size:.85rem;color:var(--muted);display:block;margin-bottom:.4rem;">
+            Email address <span style="color:var(--accent);">*</span>
+          </label>
+          <input type="email"
+            style="width:100%;padding:.65rem .8rem;border:1px solid #ccc;border-radius:4px;font-family:var(--sans);font-size:.9rem;color:var(--text);outline:none;box-sizing:border-box;">
+        </div>
+
+        <div>
+          <label style="font-size:.85rem;color:var(--muted);display:block;margin-bottom:.4rem;">
+            Message <span style="color:var(--accent);">*</span>
+          </label>
+          <textarea rows="5"
+            style="width:100%;padding:.65rem .8rem;border:1px solid #ccc;border-radius:4px;font-family:var(--sans);font-size:.9rem;color:var(--text);outline:none;resize:vertical;box-sizing:border-box;"></textarea>
+        </div>
+
+        <a href="mailto:h.saqib78@gmail.com" class="btn btn-navy"
+          style="text-align:center;display:block;">
+          Submit form
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT: Our Location -->
+    <div>
+      <h2 style="font-family:var(--serif);font-size:2rem;color:var(--navy);margin-bottom:.4rem;">Our location</h2>
+      <hr class="gold-rule">
+
+      <!-- Embedded OpenStreetMap centred on University of Liverpool -->
+      <div style="border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);margin-bottom:1.2rem;">
+        <iframe
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-2.9720%2C53.3980%2C-2.9520%2C53.4080&layer=mapnik&marker=53.4030%2C-2.9620"
+          width="100%" height="280"
+          style="border:none;display:block;"
+          loading="lazy"
+          title="University of Liverpool map">
+        </iframe>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:.5rem;font-size:.9rem;color:var(--muted);margin-bottom:1.4rem;">
+        <div style="display:flex;align-items:flex-start;gap:.7rem;">
+          <span style="color:var(--gold);font-size:1rem;margin-top:.1rem;">📍</span>
+          <span>Department of Chemistry<br>University of Liverpool<br>Liverpool, L69 7ZD, UK</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:.7rem;">
+          <span style="color:var(--gold);font-size:1rem;">✉️</span>
+          <a href="mailto:h.saqib78@gmail.com" style="color:var(--accent);">h.saqib78@gmail.com</a>
+        </div>
+      </div>
+
+      <a href="https://www.google.com/maps/place/University+of+Liverpool" target="_blank"
+        class="btn btn-navy" style="text-align:center;display:block;">
+        Open in Google Maps →
+      </a>
+    </div>
+
+  </div>
+
+  <!-- responsive stack on mobile -->
+  <style>
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+    }
+  </style>
+</section>
+    
   <div style="margin-top:2rem;">
     <a href="news.html" class="btn btn-navy">All News &amp; Events →</a>
   </div>
