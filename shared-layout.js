@@ -44,7 +44,7 @@
         <ul>
           <li><a href="https://twitter.com/HafizSaqibAl1" target="_blank">Twitter / X</a></li>
           <li><a href="https://github.com/HafizSaqibAli/" target="_blank">GitHub</a></li>
-          <li><a href="https://www.linkedin.com/in/dr-h-saqib-ali-02a324123/" target="_blank">LinkedIn</a></li>
+          <li><a href="https://www.linkedin.com/in/dr-hafiz-saqib-ali-02a324123/" target="_blank">LinkedIn</a></li>
           <li><a href="https://scholar.google.com/citations?user=qEVrdecAAAAJ&hl=en" target="_blank">Google Scholar</a></li>
         </ul>
       </div>
