@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dr Hafiz Saqib Ali · ALI Research Group</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dr Hafiz Saqib Ali — Research Associate at the University of Strathclyde & GSK. Computational chemistry, medicinal chemistry, and machine learning.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="group-style.css">
+  <style>
+
+    /* ── PROFILE HERO ──────────────────────────────────── */
+    .profile-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 60%, #1e3d72 100%);
+      padding: 70px 6% 60px;
+      position: relative; overflow: hidden;
+      display: flex; gap: 56px; align-items: center;
+    }
+    .profile-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 80% 30%, rgba(200,168,75,.14) 0%, transparent 55%),
+        radial-gradient(ellipse at 10% 70%, rgba(30,95,168,.22) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .profile-photo-wrap {
+      flex-shrink: 0; position: relative; z-index: 1;
+    }
+    .profile-photo {
+      width: 210px; height: 210px; border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--gold);
+      box-shadow: 0 0 0 10px rgba(200,168,75,.15), var(--shadow-lg);
+      background: linear-gradient(135deg,#1a3a6b,#2d6ea8);
+      display: block;
+    }
+    .profile-info { position: relative; z-index: 1; }
+    .profile-info h1 {
+      font-family: var(--serif); font-size: clamp(2rem,4vw,3rem);
+      color: var(--white); font-weight: 600; line-height: 1.15; margin-bottom: .4rem;
+    }
+    .profile-title {
+      color: var(--gold); font-size: .85rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .1em; margin-bottom: .3rem;
+    }
+    .profile-affil {
+      color: rgba(255,255,255,.6); font-size: .9rem; margin-bottom: 1.4rem; line-height: 1.6;
+    }
+    .profile-affil a { color: rgba(255,255,255,.8); text-decoration: underline; }
+    .profile-badges { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.6rem; }
+    .profile-badge {
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.82); border-radius: 20px;
+      padding: .3rem .9rem; font-size: .76rem; font-weight: 500;
+    }
+    .profile-actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+
+    /* ── BODY LAYOUT ───────────────────────────────────── */
+    .profile-body {
+      display: grid;
+      grid-template-columns: 1fr 310px;
+      gap: 3.5rem;
+      padding: 60px 6%;
+    }
+
+    /* ── LEFT: BIO + CAREER + RESEARCH ────────────────── */
+    .bio-section { margin-bottom: 3rem; }
+    .bio-section h2 {
+      font-family: var(--serif); font-size: 1.7rem; color: var(--navy); margin-bottom: .4rem;
+    }
+    .bio-section p {
+      font-size: .95rem; color: #2a3550; line-height: 1.82; margin-bottom: 1rem;
+    }
+
+    /* Career timeline */
+    .career-timeline { display: flex; flex-direction: column; gap: 0; margin-top: .5rem; }
+    .career-item {
+      display: flex; gap: 1.4rem; align-items: flex-start;
+      padding: 1.2rem 0; border-bottom: 1px solid var(--border);
+    }
+    .career-item:last-child { border-bottom: none; }
+    .career-dot-col {
+      flex-shrink: 0; display: flex; flex-direction: column; align-items: center; padding-top: .3rem;
+    }
+    .career-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--gold); border: 2px solid var(--navy);
+      box-shadow: 0 0 0 3px rgba(200,168,75,.25);
+      flex-shrink: 0;
+    }
+    .career-dot.active { background: #48c78e; box-shadow: 0 0 0 3px rgba(72,199,142,.25); }
+    .career-line {
+      width: 2px; flex: 1; background: var(--border);
+      margin-top: 4px; min-height: 30px;
+    }
+    .career-content { flex: 1; }
+    .career-period {
+      font-size: .75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .07em; color: var(--accent); margin-bottom: .25rem;
+    }
+    .career-content h4 {
+      font-size: .97rem; font-weight: 600; color: var(--navy); margin-bottom: .15rem; line-height: 1.35;
+    }
+    .career-content p {
+      font-size: .83rem; color: var(--muted); line-height: 1.6; margin-bottom: 0;
+    }
+    .career-content a { color: var(--accent); font-size: .83rem; }
+
+    /* Research interests list */
+    .interests-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; margin-top: .5rem;
+    }
+    .interest-item {
+      background: var(--light); border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 6px; padding: .75rem 1rem;
+      font-size: .86rem; color: var(--text); font-weight: 500;
+    }
+
+    /* Selected publications (compact) */
+    .sel-pub {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1rem 0; border-bottom: 1px solid var(--border);
+    }
+    .sel-pub:last-child { border-bottom: none; }
+    .sel-pub-num {
+      flex-shrink: 0; width: 26px; height: 26px;
+      background: var(--navy); color: var(--gold);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: .72rem; font-weight: 700; font-family: var(--serif); margin-top: .1rem;
+    }
+    .sel-pub-body { flex: 1; }
+    .sel-pub-title { font-size: .88rem; font-weight: 500; color: var(--navy); line-height: 1.4; margin-bottom: .2rem; }
+    .sel-pub-title a { color: var(--navy); }
+    .sel-pub-title a:hover { color: var(--accent); }
+    .sel-pub-meta { font-size: .78rem; color: var(--muted); }
+    .sel-pub-meta em { font-style: italic; }
+
+    /* ── RIGHT SIDEBAR ─────────────────────────────────── */
+    .profile-sidebar { display: flex; flex-direction: column; gap: 1.6rem; }
+    .sidebar-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.4rem; box-shadow: var(--shadow);
+    }
+    .sidebar-card h3 {
+      font-family: var(--serif); font-size: 1.05rem; color: var(--navy);
+      border-bottom: 2px solid var(--gold); padding-bottom: .45rem; margin-bottom: 1rem;
+    }
+    .contact-row {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .55rem 0; border-bottom: 1px solid var(--border); font-size: .86rem;
+    }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-icon {
+      flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px;
+      background: var(--light); display: flex; align-items: center;
+      justify-content: center; font-size: .95rem;
+    }
+    .contact-row span { color: var(--muted); font-size: .75rem; display: block; }
+    .contact-row a, .contact-row strong { color: var(--navy); font-weight: 500; font-size: .86rem; }
+
+    .edu-item { padding: .7rem 0; border-bottom: 1px solid var(--border); }
+    .edu-item:last-child { border-bottom: none; }
+    .edu-degree { font-size: .88rem; font-weight: 600; color: var(--navy); }
+    .edu-uni { font-size: .8rem; color: var(--accent); margin: .1rem 0; }
+    .edu-year { font-size: .76rem; color: var(--muted); }
+
+    .skill-cloud { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .skill-tag {
+      background: var(--light); border: 1px solid var(--border);
+      color: var(--muted); border-radius: 20px;
+      padding: .28rem .75rem; font-size: .76rem; font-weight: 500;
+    }
+
+    @media (max-width: 900px) {
+      .profile-hero { flex-direction: column; text-align: center; gap: 2rem; }
+      .profile-badges, .profile-actions { justify-content: center; }
+      .profile-body { grid-template-columns: 1fr; gap: 2rem; }
+      .interests-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV injected by shared-layout.js -->
+
+<!-- ── PROFILE HERO ─────────────────────────────────────── -->
+<header class="profile-hero">
+  <div class="profile-photo-wrap">
+    <img src="img/profile.png" alt="Dr Hafiz Saqib Ali" class="profile-photo">
+  </div>
+  <div class="profile-info">
+    <div class="profile-title">Principal Investigator · Research Associate</div>
+    <h1>Dr Hafiz Saqib Ali</h1>
+    <p class="profile-affil">
+      <a href="https://www.strath.ac.uk/science/chemistry/" target="_blank">Department of Pure &amp; Applied Chemistry</a>,
+      <a href="https://www.strath.ac.uk" target="_blank">University of Strathclyde</a>
+      &amp; <a href="https://www.gsk.com" target="_blank">GSK</a>, Stevenage, UK<br>
+      Supervised by <a href="https://www.palmer-lab.com" target="_blank">Prof. David Palmer</a>
+      &amp; <a href="https://www.linkedin.com/in/andrew-baxter-bb38a414a/" target="_blank">Dr Andrew Baxter</a>
+    </p>
+    <div class="profile-badges">
+      <span class="profile-badge">Computational Chemistry</span>
+      <span class="profile-badge">Medicinal Chemistry</span>
+      <span class="profile-badge">Machine Learning</span>
+      <span class="profile-badge">QM/MM</span>
+      <span class="profile-badge">Drug Design</span>
+      <span class="profile-badge">Antibiotic Resistance</span>
+    </div>
+    <div class="profile-actions">
+      <a href="img/CV.pdf" target="_blank" class="btn btn-primary">Download CV</a>
+      <a href="publications.html" class="btn btn-outline">Publications</a>
+      <a href="https://scholar.google.com/citations?user=qEVrdecAAAAJ&hl=en" target="_blank" class="btn btn-outline">Google Scholar</a>
+      <a href="mailto:hafiz.ali@strath.ac.uk" class="btn btn-outline">Contact</a>
+    </div>
+  </div>
+</header>
+
+<!-- ── MAIN BODY ─────────────────────────────────────────── -->
+<div class="profile-body">
+
+  <!-- LEFT COLUMN -->
+  <main>
+
+    <!-- BIO -->
+    <div class="bio-section">
+      <h2>About</h2>
+      <hr class="gold-rule">
+      <p>I am a computational scientist by training, but what really drives me is solving complex problems that make a tangible societal impact. I have a broad background in computational chemistry, chemical biology, medicinal chemistry, and machine learning, with specific aims in developing data-driven approaches to the design, synthesis, and evaluation of next-generation molecules beyond Lipinski space.</p>
+      <p>Currently, I work as a Research Associate in the <a href="https://www.strath.ac.uk/science/chemistry/">Department of Pure &amp; Applied Chemistry</a> at <a href="https://www.strath.ac.uk">the University of Strathclyde</a> and <a href="https://www.gsk.com">GSK</a>, Stevenage, UK, under the supervision of <a href="https://www.palmer-lab.com">Prof. David Palmer</a> and <a href="https://www.linkedin.com/in/andrew-baxter-bb38a414a/">Dr Andrew Baxter</a>.</p>
+      <p>Prior to Strathclyde, I worked as a Postdoctoral Research Associate at the <a href="https://www.ineosoxford.ox.ac.uk">Ineos Oxford Institute for Antimicrobial Research</a> and the <a href="https://www.chem.ox.ac.uk">Department of Chemistry</a>, <a href="https://www.ox.ac.uk">University of Oxford</a>, with groups led by <a href="https://schofield.web.ox.ac.uk">Prof. Christopher Schofield</a>, FRS and <a href="https://www.duartegroupchem.org">Prof. Fernanda Duarte</a>. My work involved bacterial proteins that inactivate antibiotics — specifically β-lactamases, transpeptidases, and deacetylases — with the goal of developing resistance-breaking inhibitors that enable effective combination therapies against drug-resistant bacteria.</p>
+      <p>Before Oxford, I worked with <a href="https://www.amandajarvis.co.uk">Dr. Amanda Jarvis</a> at <a href="https://www.ed.ac.uk">The University of Edinburgh</a>, structurally modelling artificial metalloenzymes using molecular docking and hybrid QM/MM calculations. I was awarded my PhD in 2021 from <a href="https://www.manchester.ac.uk">The University of Manchester</a>, working with <a href="https://scholar.google.com/citations?user=9kUV7lUAAAAJ&hl=en">Dr. Richard Henchman</a> and <a href="https://research.manchester.ac.uk/en/persons/sam.devisser">Prof. Samuel de Visser</a>, FRS at the <a href="https://www.mib.manchester.ac.uk">Manchester Institute of Biotechnology</a>. My PhD research focused on the development and implementation of algorithms to determine the reaction kinetics and stability of biomolecules.</p>
+    </div>
+
+    <!-- CAREER TIMELINE -->
+    <div class="bio-section">
+      <h2>Career Timeline</h2>
+      <hr class="gold-rule">
+      <div class="career-timeline">
+
+        <div class="career-item">
+          <div class="career-dot-col">
+            <div class="career-dot active"></div>
+            <div class="career-line"></div>
+          </div>
+          <div class="career-content">
+            <div class="career-period">Mar 2026 — Present</div>
+            <h4>Research Associate — University of Strathclyde &amp; GSK</h4>
+            <p>Developing data-driven approaches to the design, synthesis, and evaluation of next-generation molecules beyond Lipinski space. Supervised by <a href="https://www.palmer-lab.com">Prof. David Palmer</a> and <a href="https://www.linkedin.com/in/andrew-baxter-bb38a414a/">Dr Andrew Baxter</a>. Based in Glasgow, Scotland &amp; Stevenage, UK.</p>
+          </div>
+        </div>
+
+        <div class="career-item">
+          <div class="career-dot-col">
+            <div class="career-dot"></div>
+            <div class="career-line"></div>
+          </div>
+          <div class="career-content">
+            <div class="career-period">Mar 2022 — Feb 2026</div>
+            <h4>Postdoctoral Research Associate — University of Oxford</h4>
+            <p><a href="https://www.ineosoxford.ox.ac.uk">Ineos Oxford Institute for Antimicrobial Research</a> &amp; <a href="https://www.chem.ox.ac.uk">Department of Chemistry</a>. Supervised by <a href="https://schofield.web.ox.ac.uk">Prof. Christopher Schofield</a>, FRS and <a href="https://www.duartegroupchem.org">Prof. Fernanda Duarte</a>. Research on β-lactamases, transpeptidases, deacetylases, and resistance-breaking inhibitors.</p>
+          </div>
+        </div>
+
+        <div class="career-item">
+          <div class="career-dot-col">
+            <div class="career-dot"></div>
+            <div class="career-line"></div>
+          </div>
+          <div class="career-content">
+            <div class="career-period">Sep 2021 — Feb 2022</div>
+            <h4>Postdoctoral Research Associate — University of Edinburgh</h4>
+            <p><a href="https://www.amandajarvis.co.uk">Dr Amanda Jarvis' Group</a>. Structural modelling of artificial metalloenzymes to enhance catalytic efficiency using molecular docking and QM/MM calculations.</p>
+          </div>
+        </div>
+
+        <div class="career-item">
+          <div class="career-dot-col">
+            <div class="career-dot"></div>
+            <div class="career-line"></div>
+          </div>
+          <div class="career-content">
+            <div class="career-period">Feb 2018 — May 2021</div>
+            <h4>PhD — University of Manchester</h4>
+            <p><a href="https://www.mib.manchester.ac.uk">Manchester Institute of Biotechnology</a>. Supervised by <a href="https://scholar.google.com/citations?user=9kUV7lUAAAAJ&hl=en">Dr. Richard Henchman</a> and <a href="https://research.manchester.ac.uk/en/persons/sam.devisser">Prof. Samuel de Visser</a>, FRS. Thesis: Development and Implementation of Algorithms to Determine Reaction Kinetics and Stability of Biomolecules. Defended without revisions.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RESEARCH INTERESTS -->
+    <div class="bio-section">
+      <h2>Research Interests</h2>
+      <hr class="gold-rule">
+      <div class="interests-grid">
+        <div class="interest-item">QM/MM Enzyme Mechanisms</div>
+        <div class="interest-item">Drug Design &amp; Medicinal Chemistry</div>
+        <div class="interest-item">Antibiotic Resistance (AMR)</div>
+        <div class="interest-item">Machine Learning for Molecules</div>
+        <div class="interest-item">Free Energy Calculations</div>
+        <div class="interest-item">Artificial Metalloenzymes</div>
+        <div class="interest-item">Molecular Dynamics Simulations</div>
+        <div class="interest-item">Beyond Lipinski Space</div>
+        <div class="interest-item">Electrostatic Perturbation Analysis</div>
+        <div class="interest-item">LogP &amp; Property Prediction</div>
+      </div>
+    </div>
+
+    <!-- SELECTED PUBLICATIONS -->
+    <div class="bio-section">
+      <h2>Selected Publications</h2>
+      <hr class="gold-rule">
+
+      <div class="sel-pub">
+        <div class="sel-pub-num">1</div>
+        <div class="sel-pub-body">
+          <div class="sel-pub-title"><a href="#">The CDIN1-Codanin-1 Complex, Defective in Congenital Dyserythropoietic Anaemia Type I, is an RNA Nuclease</a></div>
+          <div class="sel-pub-meta">Brolih S, <strong>Ali HS</strong>, Scott C et al. · <em>Nature Communications</em>, <strong>2026</strong> (in press)</div>
+        </div>
+      </div>
+
+      <div class="sel-pub">
+        <div class="sel-pub-num">2</div>
+        <div class="sel-pub-body">
+          <div class="sel-pub-title"><a href="https://doi.org/10.1039/D5SC00964B">Binding Assays Enable Discovery of Tet(X) Inhibitors that Combat Tetracycline Destructase Resistance</a></div>
+          <div class="sel-pub-meta">Beech MJ, …, <strong>Ali HS</strong>, …, Schofield CJ · <em>Chemical Science</em>, <strong>2025</strong>, 16, 9691–9704</div>
+        </div>
+      </div>
+
+      <div class="sel-pub">
+        <div class="sel-pub-num">3</div>
+        <div class="sel-pub-body">
+          <div class="sel-pub-title"><a href="https://doi.org/10.1021/acscatal.4c02365">Probing Ferryl Reactivity in a Nonheme Iron Oxygenase Using an Expanded Genetic Code</a></div>
+          <div class="sel-pub-meta">Hardy FJ, …, <strong>Ali HS</strong>, …, Green AP · <em>ACS Catalysis</em>, <strong>2024</strong>, 14, 11584–11590</div>
+        </div>
+      </div>
+
+      <div class="sel-pub">
+        <div class="sel-pub-num">4</div>
+        <div class="sel-pub-body">
+          <div class="sel-pub-title"><a href="https://doi.org/10.1021/acscatal.3c02262">How Does the Nonheme Iron Enzyme NapI React through L-Arginine Desaturation Rather Than Hydroxylation? A QM/MM Study</a></div>
+          <div class="sel-pub-meta"><strong>Ali HS</strong>, Warwicker J, de Visser SP · <em>ACS Catalysis</em>, <strong>2023</strong>, 13, 10705–10721</div>
+        </div>
+      </div>
+
+      <div class="sel-pub">
+        <div class="sel-pub-num">5</div>
+        <div class="sel-pub-body">
+          <div class="sel-pub-title"><a href="https://doi.org/10.1039/D3CP03076H">Energy-Entropy Multiscale Cell Correlation Method to Predict Toluene-Water LogP in the SAMPL9 Challenge</a></div>
+          <div class="sel-pub-meta"><strong>Ali HS</strong>, Henchman R · <em>Physical Chemistry Chemical Physics</em>, <strong>2023</strong>, 25, 27524–27531</div>
+        </div>
+      </div>
+
+      <div class="sel-pub">
+        <div class="sel-pub-num">6</div>
+        <div class="sel-pub-body">
+          <div class="sel-pub-title"><a href="https://doi.org/10.1002/chem.202104167">Electrostatic Perturbations in the Substrate-Binding Pocket of Taurine/α-Ketoglutarate Dioxygenase Determine its Selectivity</a></div>
+          <div class="sel-pub-meta"><strong>Ali HS</strong>, de Visser SP · <em>Chemistry: A European Journal</em>, <strong>2022</strong>, 16, e202104167</div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.4rem;">
+        <a href="publications.html" class="btn btn-navy">View All Publications →</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="profile-sidebar">
+
+    <!-- CONTACT -->
+    <div class="sidebar-card">
+      <h3>Contact</h3>
+      <div class="contact-row">
+        <div class="contact-icon">✉</div>
+        <div>
+          <span>Email</span>
+          <a href="mailto:hafiz.ali@strath.ac.uk">hafiz.ali@strath.ac.uk</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">𝕏</div>
+        <div>
+          <span>Twitter / X</span>
+          <a href="https://twitter.com/HafizSaqibAl1" target="_blank">@HafizSaqibAl1</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">⌥</div>
+        <div>
+          <span>GitHub</span>
+          <a href="https://github.com/HafizSaqibAli/" target="_blank">HafizSaqibAli</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">in</div>
+        <div>
+          <span>LinkedIn</span>
+          <a href="https://www.linkedin.com/in/dr-h-saqib-ali-02a324123/" target="_blank">Dr H Saqib Ali</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">◎</div>
+        <div>
+          <span>Google Scholar</span>
+          <a href="https://scholar.google.com/citations?user=qEVrdecAAAAJ&hl=en" target="_blank">View Profile</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="sidebar-card">
+      <h3>Education</h3>
+      <div class="edu-item">
+        <div class="edu-degree">PhD in Computational Chemistry</div>
+        <div class="edu-uni">University of Manchester</div>
+        <div class="edu-year">2018 – 2021 · No Revisions</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">MSc / BSc in Chemistry</div>
+        <div class="edu-uni">Prior to Manchester</div>
+        <div class="edu-year">Chief Minister Merit Scholar, Pakistan</div>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="sidebar-card">
+      <h3>Computational Skills</h3>
+      <div class="skill-cloud">
+        <span class="skill-tag">QM/MM</span>
+        <span class="skill-tag">Molecular Dynamics</span>
+        <span class="skill-tag">DFT</span>
+        <span class="skill-tag">ORCA</span>
+        <span class="skill-tag">Gaussian</span>
+        <span class="skill-tag">AMBER</span>
+        <span class="skill-tag">GROMACS</span>
+        <span class="skill-tag">AutoDock</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Machine Learning</span>
+        <span class="skill-tag">RDKit</span>
+        <span class="skill-tag">Schrödinger</span>
+      </div>
+    </div>
+
+    <!-- AWARDS -->
+    <div class="sidebar-card">
+      <h3>Awards &amp; Recognition</h3>
+      <div class="edu-item">
+        <div class="edu-degree">Chief Minister Merit Scholarship</div>
+        <div class="edu-uni">Government of Pakistan</div>
+        <div class="edu-year">2017 · Top 50 University PhD Funding</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">PhD Passed Without Revisions</div>
+        <div class="edu-uni">University of Manchester</div>
+        <div class="edu-year">2021</div>
+      </div>
+    </div>
+
+    <!-- CV DOWNLOAD -->
+    <div class="sidebar-card" style="text-align:center; background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);">
+      <h3 style="color:var(--white); border-color: var(--gold);">Curriculum Vitae</h3>
+      <p style="font-size:.85rem; color:rgba(255,255,255,.65); margin-bottom:1.2rem; line-height:1.6;">Download the full CV for a complete list of publications, talks, and academic activities.</p>
+      <a href="img/CV.pdf" target="_blank" class="btn btn-primary" style="width:100%; justify-content:center;">
+        ↓ Download CV (PDF)
+      </a>
+    </div>
+
+  </aside>
+
+</div><!-- /profile-body -->
+
+<script src="shared-layout.js"></script>
+</body>
+</html>
