@@ -4,7 +4,8 @@
 
   const pages = [
     { href: 'index.html',        label: 'Home' },
-    { href: 'research.html',     label: 'Research Areas' },
+    { href: 'research.html',     label: 'Research' },
+    { href: 'hafiz.html',        label: 'Hafiz' },
     { href: 'team.html',         label: 'Our Team' },
     { href: 'publications.html', label: 'Publications' },
     { href: 'projects.html',     label: 'Projects' },
