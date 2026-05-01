@@ -38,7 +38,8 @@
         <h4>Navigate</h4>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="research.html">Research Areas</a></li>
+          <li><a href="research.html">Our Research</a></li>
+          <li><a href="hafiz.html">Hafiz</a></li>
           <li><a href="team.html">Our Team</a></li>
           <li><a href="publications.html">Publications</a></li>
           <li><a href="projects.html">Projects</a></li>
